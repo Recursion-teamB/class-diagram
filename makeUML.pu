@@ -1,0 +1,132 @@
+@startuml
+
+class Card{
+    -String suit
+    -String number
+    +String toString()
+    +String getSuit()
+    +String getNumber()
+    +number getValue()
+}
+
+class Deck{
+    -Card[] deck
+
+    Deck()
+    Card[] create()
+    void shuffle()
+    +String toString()
+    +Card draw()
+    Card[] divideDeck()
+}
+
+class Player{
+    #String name
+    #Card[] hand
+    #String type
+    #number score
+
+    +String getName()
+    +Card[] getHand()
+    +String getType()
+    +number getScore()
+    +number setScore()
+    +number addScore()
+}
+
+class Table{
+    Player[] players
+    Deck deck
+}
+
+package Speed{
+    class SpeedPlayer extends Player{
+        Card[] HalfDeck
+        Card dragAndDropCard()
+        Card drawCard()
+    }
+
+    class SpeedTable extends Table{
+        SpeedPlayer[] speedPlayers
+        Card[] field
+        Card[] dealCards()
+        void addCardInHands()
+        void updateField()
+    }
+
+    class SpeedView {
+        void displayStart()
+        void displayEnd()
+        void displayDragAndDrop()
+        void displayDrawCard()
+        void displayUpdateField()
+    }
+    class SpeedController {
+        Boolean isEndGame
+        Boolean judgeCanHandOn
+
+        void startGame()
+        Boolean isEndGame()
+        void endGame()
+
+        void dealCards()
+        void addCardInHands()
+        void updateField()
+        void aiControll()
+        Boolean judgeCanHandOn()
+        void handOnSameTime()
+    }
+    SpeedController -- SpeedView
+    SpeedController o-- SpeedTable
+    SpeedTable o-- SpeedPlayer
+}
+
+
+
+package poker{
+    class PokerPlayer extends Player{
+        -number wager
+        +void changeHand()
+        +number getWager()
+        +void setWager()
+        +number[] getRole()
+    }
+    class PokerTable{
+        PokerPlayer[] pokerPlayers
+        number pokerPot
+        void addPlayer()
+    }
+
+    class PokerView{
+        displayStart()
+        displayEnd()
+        displayPot()
+        displayBet()
+        displayFold()
+        displayRaise()
+        displayWin()
+        displayLose()
+    }
+
+    class PokerController{
+        number rounds
+        void startGame()
+        Boolean isEndGame()
+        void endGame()
+        void countRound()
+    }
+    PokerController -- PokerView
+    PokerController o-- PokerTable
+    PokerTable o-- PokerPlayer
+    PokerTable o-- PokerPot
+}
+
+
+Deck o-- Card
+Table o-- Deck
+Player o-- Card
+Table o-- Player
+SpeedTable o-- Deck
+SpeedTable o-- Card
+
+@enduml
