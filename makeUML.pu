@@ -220,4 +220,32 @@ Table o-- Player
 SpeedTable o-- Deck
 SpeedTable o-- Card
 
+package War{
+    class warPlayer extends Player{
+        -Card deck
+        +Card drawCard()
+    }
+
+    class warTable extends Table{
+        -warPlayer[] warPlayers
+        +number compareCards()
+    }
+
+    class warController{
+        +void startGame()
+        +void endGame()
+    }
+
+    class warView{
+    + void drawInit()
+    + void showDrawnCard()
+    + void clearTable()
+    + void drawResult()
+    }
+
+    warView --- warController
+    warTable o-- warPlayer
+    warController o-- warTable
+}
+
 @enduml
