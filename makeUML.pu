@@ -91,7 +91,7 @@ package poker{
         +void setWager()
         +number[] getRole()
     }
-    class PokerTable{
+    class PokerTable extends Table{
         PokerPlayer[] pokerPlayers
         number pokerPot
         void addPlayer()
@@ -121,6 +121,97 @@ package poker{
     PokerTable o-- PokerPot
 }
 
+package BlackJack {
+    class BlackJackPlayer extends Player {
+        String gameStatus
+
+        Number bet()
+        Number addChip()
+        Number getHandScore()
+        Command selectCommand()
+    }
+
+    class BlackJackTable extends Table {
+        Player house
+        Number roundNumber
+        Number turnNumber
+        String phase
+        Number[] bets
+
+        void victoryJudge()
+        void judgeHand()
+        void setBets()
+        void setBlackJack()
+        Card deal()
+    }
+
+    class Command {
+        String command
+        Number amount
+    }
+
+    class BlackJackView {
+        displayHit()
+        displayStay()
+        displayDouble()
+        displayeSurrender()
+    }
+
+    class BlackJackcontoller {
+        void startGame()
+        void endGame()
+    }
+    BlackJackcontoller o-- BlackJackTable
+    BlackJackcontoller -- BlackJackView
+    BlackJackTable o-- BlackJackPlayer
+    BlackJackPlayer o-- Command
+}
+
+package Texas holdem {
+    class TexasPlayer extends Player{
+        String gameStatus
+
+        Number bet()
+        Number addchip()
+        String getHandRole()
+        Command selectCommand()
+    }
+
+    class TexasTable extends Table {
+        Player house
+        Number roundNumber
+        Number turnNumber
+        String phase
+        Number[] bets
+        Card[] communityCards
+
+        void victoryJudge()
+        void judgeHnad()
+        void setBets()
+        Card deal()
+    }
+
+    class Command {
+        String command
+        Number amound
+    }
+
+    class Role {
+        Card[] cards
+        Number judge()
+    }
+
+    class TexasView {
+        displayRole()
+    }
+
+    class TexasController {
+        void startGame()
+        void endGame()
+    }
+    TexasTable o-- TexasPlayer
+    TexasPlayer o-- Role
+}
 
 Deck o-- Card
 Table o-- Deck
