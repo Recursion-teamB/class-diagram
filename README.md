@@ -16,8 +16,11 @@
 
 ![image](https://user-images.githubusercontent.com/83019007/226153575-7b46e18c-0927-4340-ba62-01c9819c88dc.png)
 
-- Black Jack and Texas Holdem
+- Black Jack
+![blackJack drawio](https://user-images.githubusercontent.com/101968892/226385596-50777462-20e0-4658-ad9f-400822fd385e.png)
 
+- Texas Holdem
+![pokerAC drawio](https://user-images.githubusercontent.com/101968892/226386129-ec5bf508-5a4f-4604-afe0-8ba72d71ca79.png)
 
 - War
 
